@@ -44,7 +44,14 @@ def check_security_headers(url):
             if header not in headers:
                 missing_headers.append(header)
             else:
-                pass
+                # Extra checks for some headers
+                if header.lower() == "server":
+                    if headers[header]:
+                        warnings.append(f"[!] Server header present: {headers[header]} (consider removing).")
+                if header.lower() == "set-cookie":
+                    cookie_value = headers.get(header, "")
+                    if "Secure" not in cookie_value or "HttpOnly" not in cookie_value:
+                        warnings.append("[!] Set-Cookie header missing Secure or HttpOnly flags.")
         if missing_headers:
             print("[-] Missing Security Headers:")
             for mh in missing_headers:
