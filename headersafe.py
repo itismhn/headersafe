@@ -36,6 +36,7 @@ def check_security_headers(url):
         for key, value in headers.items():
             print(f"{key}: {value}")
 
+        print("\n[+] Checking for missing or weak security headers:\n")
         # check missing headers
         missing_headers = []
 
