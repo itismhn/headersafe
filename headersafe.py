@@ -20,5 +20,9 @@ SECURITY_HEADERS = [
     "Set-Cookie",
 ]
 
+def check_security_headers(url):
+    print(url)
+
 if __name__ == "__main__":
     target_url = input("Enter the URL (include http/https): ").strip()
+    check_security_headers(target_url)
