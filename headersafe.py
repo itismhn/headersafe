@@ -19,3 +19,6 @@ SECURITY_HEADERS = [
     "Server",
     "Set-Cookie",
 ]
+
+if __name__ == "__main__":
+    target_url = input("Enter the URL (include http/https): ").strip()
