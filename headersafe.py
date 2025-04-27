@@ -29,6 +29,13 @@ def check_security_headers(url):
         except:
             print("[*] HEAD request failed or returned no headers. Trying GET...")
             response = requests.get(url, allow_redirects=True, timeout=10)
+
+        headers = response.headers
+
+        print(f"\n[+] Headers fetched from {url}:\n")
+        for key, value in headers.items():
+            print(f"{key}: {value}")
+
     except requests.exceptions.RequestException as e:
         print(f"[!] Error connecting to {url}: {e}")
 
