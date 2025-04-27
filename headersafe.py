@@ -44,6 +44,12 @@ def check_security_headers(url):
                 missing_headers.append(header)
             else:
                 pass
+        if missing_headers:
+            print("[-] Missing Security Headers:")
+            for mh in missing_headers:
+                print(f"   - {mh}")
+        else:
+            print("[+] All important security headers are present. Well done!")
 
     except requests.exceptions.RequestException as e:
         print(f"[!] Error connecting to {url}: {e}")
